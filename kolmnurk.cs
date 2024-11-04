@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -72,8 +72,8 @@ namespace kolmnurk1
             }
         }
     }
-    
-    
+
+
 
 
 
@@ -84,7 +84,8 @@ namespace kolmnurk1
     public partial class kolmnurk1 : Form
     {
         Button btn;
-        
+        PictureBox tP;
+
         public kolmnurk1()
         {
             this.Size = new Size(800, 400);
@@ -101,8 +102,13 @@ namespace kolmnurk1
             btn.FlatStyle = FlatStyle.Flat;
             btn.Size = new Size(200, 100);
             btn.Location = new Point(500, 40);
+            Controls.Add(btn);
 
-            this.Controls.Add(btn);
+            tP = new PictureBox();
+            tP.Size = new Size(200, 200);
+            tP.Location = new Point(50, 50);
+            tP.BackgroundImage = Image.FromFile(@"..\..\..\triangle.png");
+            Controls.Add(tP);
 
         }
     }
