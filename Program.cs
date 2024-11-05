@@ -16,7 +16,7 @@ namespace kolmnurk1
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new kolmnurk1());
+            Application.Run(new Form1());
         }
     }
 }
