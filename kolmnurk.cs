@@ -97,7 +97,7 @@ namespace sdcscsc
             listView1 = new ListView
             {
                 Location = new Point(50, 200),
-                Size = new Size(400, 150),
+                Size = new Size(350, 170),
                 View = View.Details,
                 GridLines = true,
                 FullRowSelect = true
