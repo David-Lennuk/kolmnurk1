@@ -17,16 +17,14 @@ namespace kolmnurk1
             b = sideB;
             c = sideC;
 
-            // Настройка окна
             this.Text = "Рисование треугольника";
-            this.Size = new Size(400, 300); // Размер окна
+            this.Size = new Size(400, 300);
             this.StartPosition = FormStartPosition.CenterScreen;
 
-            // Создаем панель для рисования
             drawPanel = new Panel
             {
-                Size = new Size(200, 150), // Уменьшаем размер панели в два раза
-                Location = new Point(50, 50), // Позиция панели
+                Size = new Size(200, 150),
+                Location = new Point(50, 50),
                 BackColor = Color.White
             };
             this.Controls.Add(drawPanel);
@@ -35,12 +33,10 @@ namespace kolmnurk1
             drawPanel.Paint += DrawPanel_Paint;
         }
 
-        // Метод для рисования треугольника в панели
         private void DrawPanel_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
 
-            // Проверяем существование треугольника
             if (a + b <= c || a + c <= b || b + c <= a)
             {
                 MessageBox.Show("Треугольник с такими сторонами не существует");
@@ -57,8 +53,8 @@ namespace kolmnurk1
             c *= scale;
 
             // Начальная точка для стороны a
-            PointF pointA = new PointF(10, drawPanel.Height - 30); // Начало координат для стороны a
-            PointF pointB = new PointF(pointA.X + (float)a, pointA.Y); // Конец стороны a
+            PointF pointA = new PointF(10, drawPanel.Height - 30);
+            PointF pointB = new PointF(pointA.X + (float)a, pointA.Y);
 
             // Вычисляем угол для третьей вершины
             double angleC = Math.Acos((a * a + b * b - c * c) / (2 * a * b));
@@ -67,16 +63,13 @@ namespace kolmnurk1
 
             PointF pointC = new PointF(xC, yC);
 
-            // Центрирование треугольника
             float centerX = drawPanel.Width / 2;
             float centerY = drawPanel.Height / 2;
 
-            // Сдвигаем все точки, чтобы центрировать треугольник
             float offsetX = centerX - (pointA.X + pointB.X + pointC.X) / 3;
             float offsetY = centerY - (pointA.Y + pointB.Y + pointC.Y) / 3;
 
-            // Увеличиваем сдвиг по оси Y, чтобы треугольник был немного ниже
-            offsetY += 10; // Дополнительное смещение по вертикали
+            offsetY += 10;
 
             pointA.X += offsetX;
             pointA.Y += offsetY;
@@ -87,9 +80,9 @@ namespace kolmnurk1
 
             // Рисуем треугольник
             Pen pen = new Pen(Color.Blue, 2);
-            g.DrawLine(pen, pointA, pointB);  // Сторона a
-            g.DrawLine(pen, pointB, pointC);  // Сторона b
-            g.DrawLine(pen, pointC, pointA);  // Сторона c
+            g.DrawLine(pen, pointA, pointB);
+            g.DrawLine(pen, pointB, pointC);
+            g.DrawLine(pen, pointC, pointA);
 
             // Метки для сторон
             g.DrawString("A", new Font("Arial", 12), Brushes.Black, pointA.X - 20, pointA.Y);
