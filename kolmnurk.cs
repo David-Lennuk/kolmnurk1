@@ -1,9 +1,8 @@
 using System;
 using System.Drawing;
 using System.Windows.Forms;
-using static System.Net.Mime.MediaTypeNames;
 
-namespace sdcscsc
+namespace kolmnurk1
 {
     public class kolmnurk1
     {
@@ -37,14 +36,14 @@ namespace sdcscsc
         }
     }
 
-    public partial class Form1 : Form
+    public partial class kolmnurk : Form
     {
-        Button btn;
+        Button btn, btn2;
         TextBox txtA, txtB, txtC;
         ListView listView1;
         Label lblA, lblB, lblC;
 
-        public Form1()
+        public kolmnurk()
         {
             InitializeComponent();
         }
@@ -65,6 +64,18 @@ namespace sdcscsc
             };
             btn.Click += Run_button_Click;
             Controls.Add(btn);
+
+            btn2 = new Button
+            {
+                Text = "Рисование треугольника",
+                BackColor = Color.FromArgb(255, 255, 192),
+                Font = new Font("Arial", 20),
+                Size = new Size(200, 100),
+                Location = new Point(500, 200),
+                Cursor = Cursors.Hand
+            };
+            btn2.Click += Btn_Click;
+            Controls.Add(btn2);
 
 
             lblA = new Label();
@@ -131,6 +142,17 @@ namespace sdcscsc
 
             return textBox;
         }
+
+        private void Btn_Click(object sender, EventArgs e)
+        {
+            double a = Convert.ToDouble(txtA.Text);
+            double b = Convert.ToDouble(txtB.Text);
+            double c = Convert.ToDouble(txtC.Text);
+
+            Form2 form2 = new Form2(800, 600, a, b, c);
+            form2.Show();
+        }
+
 
         public void Run_button_Click(object sender, EventArgs e)
         {
