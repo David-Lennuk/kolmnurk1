@@ -38,7 +38,7 @@ namespace kolmnurk1
 
     public partial class kolmnurk : Form
     {
-        Button btn, btn2;
+        Button btn, btn2, btn3;
         TextBox txtA, txtB, txtC;
         ListView listView1;
         Label lblA, lblB, lblC;
@@ -59,7 +59,7 @@ namespace kolmnurk1
                 BackColor = Color.FromArgb(255, 255, 192),
                 Font = new Font("Arial", 28),
                 Size = new Size(200, 100),
-                Location = new Point(500, 40),
+                Location = new Point(500, 25),
                 Cursor = Cursors.Hand
             };
             btn.Click += Run_button_Click;
@@ -71,12 +71,23 @@ namespace kolmnurk1
                 BackColor = Color.FromArgb(255, 255, 192),
                 Font = new Font("Arial", 20),
                 Size = new Size(200, 100),
-                Location = new Point(500, 200),
+                Location = new Point(500, 125),
                 Cursor = Cursors.Hand
             };
             btn2.Click += Btn_Click;
             Controls.Add(btn2);
 
+            btn3 = new Button
+            {
+                Text = "Форма 2",
+                BackColor = Color.FromArgb(255, 255, 192),
+                Font = new Font("Arial", 20),
+                Size = new Size(200, 100),
+                Location = new Point(500, 225),
+                Cursor = Cursors.Hand
+            };
+            btn3.Click += Btn2_Click;
+            Controls.Add(btn3);
 
             lblA = new Label();
             lblA.Text = "Сторона A:";
@@ -99,11 +110,9 @@ namespace kolmnurk1
             lblC.Location = new Point(150, 125);
             Controls.Add(lblC);
 
-
             txtA = CreateTextBox("", 0, 250, 40);
             txtB = CreateTextBox("", 0, 250, 80);
             txtC = CreateTextBox("", 0, 250, 120);
-
 
             listView1 = new ListView
             {
@@ -153,7 +162,6 @@ namespace kolmnurk1
             form2.Show();
         }
 
-
         public void Run_button_Click(object sender, EventArgs e)
         {
             double a, b, c;
@@ -179,6 +187,12 @@ namespace kolmnurk1
             else
                 listView1.Items[5].SubItems.Add("Не существует");
             listView1.Items[6].SubItems.Add("Спецификатор");
+        }
+
+        private void Btn2_Click(object sender, EventArgs e)
+        {
+            Form3 form3 = new Form3(800, 600);
+            form3.Show();
         }
     }
 }
